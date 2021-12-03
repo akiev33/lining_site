@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+</head>
+<body>
+
+    <img src="{{stock.image.url}}">
+
+    {{stock.title}}
+    {{stock.sub_title}}
+    {{stock.description}}
+    {% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'stock_update' pk=stock.pk %}"><span class="glyphicon glyphicon-pencil">update</span></a>
+
+        <a class="btn btn-default" href="{% url 'stock_delete' pk=stock.pk %}"><span class="glyphicon glyphicon-pencil">delete</span></a>
+
+    {% endif %}
+
+
+
+</body>
+</html>
