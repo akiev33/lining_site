@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 
-from board_body.models import Post, Stock
+from .models import Post, Stock
 from .forms import PostForm, StockForm
 
 
@@ -11,8 +11,12 @@ from .forms import PostForm, StockForm
 def index(request):
     posts = Post.objects.all()
     stock = Stock.objects.all().last()
+
     return render(request, 'index.html', locals())
 
+def company(request):
+
+    return render(request, 'company_detail.html', locals())
 
 class PostListView(generic.ListView):
     model = Post
@@ -24,6 +28,7 @@ class PostDetailView(generic.DetailView):
     model = Post
     template_name = 'post_crud/post_detail.html'
     context_object_name = 'post'
+
     def get_success_url(self):
         post_id = self.kwargs['pk']
         return reverse_lazy('post_detail', kwargs={
@@ -42,6 +47,7 @@ class PostUpdateView(generic.UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'post_crud/update.html'
+
     def get_success_url(self):
         post_id = self.kwargs['pk']
         return reverse_lazy('post_detail', kwargs={
@@ -60,6 +66,7 @@ class StockDetailView(generic.DetailView):
     model = Stock
     template_name = 'stock_crud/stock_detail.html'
     context_object_name = 'stock'
+
     def get_success_url(self):
         stock_id = self.kwargs['pk']
         return reverse_lazy('stock_detail', kwargs={
@@ -79,6 +86,7 @@ class StockUpdateView(generic.UpdateView):
     model = Stock
     form_class = StockForm
     template_name = 'stock_crud/update.html'
+
     def get_success_url(self):
         stock_id = self.kwargs['pk']
         return reverse_lazy('stock_detail', kwargs={

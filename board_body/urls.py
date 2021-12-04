@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, StockDetailView, PostListView, StockListView,
-                     StockCreateView, StockUpdateView, StockDeleteView, index)
+                     StockCreateView, StockUpdateView, StockDeleteView, index, company)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -13,6 +13,7 @@ urlpatterns = [
 
     path('man_boots/', PostListView.as_view(), name='man_boots'),
     path('stocks/', StockListView.as_view(), name='stocks'),
+    path('company_detail/', company, name='company'),
 
 
     path('', StockDetailView.as_view(), name='index'),
