@@ -8,14 +8,16 @@
 							<form method="post" enctype="multipart/form-data">
 								{% csrf_token %}
 								{{form.as_p}}
+
 										<ul class="actions">
 											<li><input type="submit" value="Подтвердить"></li>
 											<li><a href="{% url 'post_update' pk=post.pk %}" class="button big">Сбросить</a></li>
 
 										</ul>
-									</div>
+
 							</form>
 				</header>
+			</div>
 
 
 	</section>
