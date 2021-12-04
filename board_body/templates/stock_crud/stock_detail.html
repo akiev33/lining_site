@@ -1,25 +1,26 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>detail</title>
-</head>
-<body>
+{% extends 'index.html' %}
 
-    <img src="{{stock.image.url}}">
+{% block content %}
+<section>
+    <header class="major">
+			<h2>{{stock.title}}</h2>
+		</header>
+    <article class="style{{stock.id}}">
+        <img src="{{stock.image.url}}" width="700" height="500">
+        <h3>{{stock.sub_title}}</h3>
+        <p>{{stock.description}}</p>
+        <p>{{post.created_date}}</p>
+        <ul class="actions">
+            {% if user.is_authenticated %}
+                <li><a class="button" href="{% url 'stock_update' pk=stock.pk %}"><span class="glyphicon glyphicon-pencil">Редактировать</span></a></li>
 
-    {{stock.title}}
-    {{stock.sub_title}}
-    {{stock.description}}
-    {% if user.is_authenticated %}
-        <a class="btn btn-default" href="{% url 'stock_update' pk=stock.pk %}"><span class="glyphicon glyphicon-pencil">update</span></a>
+                <li><a class="button" href="{% url 'stock_delete' pk=stock.pk %}"><span class="glyphicon glyphicon-pencil">Удалить</span></a></li>
+            {% endif %}
+        </ul>
 
-        <a class="btn btn-default" href="{% url 'stock_delete' pk=stock.pk %}"><span class="glyphicon glyphicon-pencil">delete</span></a>
+    </article>
 
-    {% endif %}
+</section>
 
-
-
-</body>
-</html>
+{% endblock %}

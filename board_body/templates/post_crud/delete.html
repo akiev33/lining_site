@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>delete</title>
-</head>
-<body>
-<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm">
+{% extends 'index.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <h2>Вы уверены удалить товар "{{ object }}" ?</h2>
+
+    <ul class="actions">
+        <li><input type="submit" value="Подтвердить"></li>
+    </ul>
 </form>
-</body>
-</html>
+{% endblock %}

@@ -1,144 +1,27 @@
-{% load static %}
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>LINING KG</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
-	</head>
-	<body class="is-preload">
+{% extends 'index.html' %}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+{% block content %}
+	<section>
+		<header class="major">
+			<h2>Акции</h2>
+		</header>
+		<div class="posts">
+			{% for stock in stocks %}
+			<article class="style{{posts.id}}">
+				<a href="{% url 'stock_detail' pk=stock.pk %}" class="image"><img src="{{stock.image.url}}" alt="" width="300" height="300"></a>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+				<h3>{{stock.title}}</h3>
+				<h3>{{stock.sub_title}}</h3>
+				<p>{{stock.created_date}}</p>
 
-							<!-- Header -->
-								<header id="header">
-									<a href="{% url 'index' %}" class="logo"><strong>LINING KG</strong></a>
-									<ul class="icons">
-										<li><a href="https://www.instagram.com/lining.admix.kg/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									</ul>
-								</header>
+				<ul class="actions">
+					<li><a href="{% url 'stock_detail' pk=stock.pk %}" class="button">Читать далее</a></li>
+				</ul>
+			</article>
+			{% endfor %}
 
-							<!-- Banner -->
-
-							<!-- Section -->
+		</div>
+	</section>
+{% endblock %}
 
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Акции</h2>
-									</header>
-									<div class="posts">
-										{% for stock in stocks %}
-										<article class="style{{posts.id}}">
-											<a href="{% url 'stock_detail' pk=stock.pk %}" class="image"><img src="{{stock.image.url}}" alt="" width="300" height="300"></a>
-
-                                            <h3>{{stock.title}}</h3>
-											<h3>{{stock.sub_title}}</h3>
-											<p>{{stock.description}}</p>
-											<p>{{stock.created_date}}</p>
-
-											<ul class="actions">
-												<li><a href="{% url 'stock_detail' pk=stock.pk %}" class="button">Читать далее</a></li>
-											</ul>
-										</article>
-										{% endfor %}
-
-									</div>
-								</section>
-
-						</div>
-					</div>
-
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							{% if user.is_authenticated %}
-								Здраствуйте, {{ user.username }}!
-
-							{% else %}
-								<p>Вы не зарегистрированы<br> <a href="{% url 'login' %}">Войти</a></p>
-
-							{% endif %}
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Меню</h2>
-									</header>
-									<ul>
-										<li><a href="{% url 'index' %}">Главная страница</a></li>
-
-										<li>
-											<span class="opener">Мужское</span>
-											<ul>
-												<li><a href="{% url 'man_boots' %}">Кроссовки</a></li>
-												<li><a href="#">Одежда</a></li>
-												<li><a href="#">Аксессуары</a></li>
-
-											</ul>
-										</li>
-
-										<li>
-											<span class="opener">Женское</span>
-											<ul>
-												<li><a href="#">Кроссовки</a></li>
-												<li><a href="#">Одежда</a></li>
-												<li><a href="#">Аксессуары</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Акции</a></li>
-										<li><a href="#">О компании</a></li>
-
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Контакты и Адреса</h2>
-									</header>
-									<p>Доставка внутри города Бишкек бесплатно </p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="https://mail.google.com/">lining_kg@gmail.com</a></li>
-										<li class="icon solid fa-envelope"><a href="https://mail.ru/">lining_kg@mail.ru</a></li>
-										<li class="icon solid fa-phone">0(999) 999-999</li>
-										<li class="icon solid fa-phone">0(558) 999-999</li>
-										<li class="icon solid fa-phone">0(770) 999-999</li>
-										<li class="icon solid fa-home">5 мкр. по К.Маркса<br>
-										ГУМ, 2 этаж<br> Дордой плаза, 2 этаж <br> Бишкек парк, 2 этаж </li>
-									</ul>
-							</section>
-
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Разработчики: <a href="https://www.instagram.com/erl_jk/">Эрбол</a>. <a href="https://www.instagram.com/akiev.e_/">Эльдар</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="{% static 'assets/js/jquery.min.js'%}"></script>
-			<script src="{% static 'assets/js/browser.min.js'%}"></script>
-			<script src="{% static 'assets/js/breakpoints.min.js'%}"></script>
-			<script src="{% static 'assets/js/util.js'%}"></script>
-			<script src="{% static 'assets/js/main.js'%}"></script>
-
-	</body>
-</html>

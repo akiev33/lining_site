@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>update</title>
-</head>
-<body>
-<form method="post" enctype="multipart/form-data">
-{% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="update">
-  </form>
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% block content %}
+	<section id="banner">
+			<div class="content">
+				<header>
+					<h3>Редактирование товара</h3>
+							<form method="post" enctype="multipart/form-data">
+								{% csrf_token %}
+								{{form.as_p}}
+										<ul class="actions">
+											<li><input type="submit" value="Подтвердить"></li>
+											<li><a href="{% url 'post_update' pk=post.pk %}" class="button big">Сбросить</a></li>
+
+										</ul>
+									</div>
+							</form>
+				</header>
+
+
+	</section>
+{% endblock %}

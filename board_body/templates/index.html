@@ -23,23 +23,25 @@
 
 							<!-- Header -->
 								<header id="header">
+
 									<h2><a href="{% url 'index' %}" class="logo"><strong>LINING KG</strong></a></h2>
-									<ul class="actions">
+
+										<ul class="actions">
 												{% if user.is_authenticated %}
 											<li><a href="{% url 'stock_create' %}" class="button big">Создать акцию</a></li>
 											<li><a href="{% url 'post_create' %}" class="button big">Добавить товар</a></li>
 												{% endif %}
-											</ul>
+										</ul>
 									<ul class="icons">
-
 
 										<li>
 											<h2><a href="https://www.instagram.com/lining.admix.kg/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></h2></li>
-
 									</ul>
 								</header>
 
 							<!-- Banner -->
+								{% block content %}
+
 								<section id="banner">
 									{%if stock != None%}
 									<div class="content">
@@ -85,7 +87,6 @@
 											<a href="{% url 'post_detail' pk=post.pk %}" class="image"><img src="{{post.image.url}}" alt="" width="120" height="360"></a>
 											<h3>{{post.name}}</h3>
 											<h3>{{post.price}}</h3>
-											<p>{{post.description}}</p>
 											<p>{{post.created_date}}</p>
 											<ul class="actions">
 												<li><a href="{% url 'post_detail' pk=post.pk %}" class="button">Посмотреть</a></li>
@@ -95,7 +96,7 @@
 
 									</div>
 								</section>
-
+							{% endblock %}
 						</div>
 					</div>
 
