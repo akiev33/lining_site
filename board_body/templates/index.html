@@ -56,7 +56,7 @@
 										</ul>
 									</div>
 									<span class="image">
-										<img src="{{stock.image.url}}" alt="" width="488" height="412">
+										<a href="{% url 'stock_detail' pk=stock.pk %}"><img src="{{stock.image.url}}" alt="" ></a>
 									</span>
 									{%else%}
 									<div class="content">
@@ -84,10 +84,10 @@
 									<div class="posts">
 										{% for post in posts %}
 										<article class="style{{posts.id}}">
-											<a href="{% url 'post_detail' pk=post.pk %}" class="image"><img src="{{post.image.url}}" alt="" width="444" height="273"></a>
+											<a href="{% url 'post_detail' pk=post.pk %}" class="image"><img src="{{post.image.url}}" alt="" width="444" height="444"></a>
 											<h3>{{post.name}}</h3>
-											<h3>{{post.price}}</h3>
-											<p>{{post.created_date}}</p>
+											<h3>{{post.price}} сом</h3>
+
 											<ul class="actions">
 												<li><a href="{% url 'post_detail' pk=post.pk %}" class="button">Посмотреть</a></li>
 											</ul>
@@ -124,8 +124,8 @@
 											<span class="opener">Мужское</span>
 											<ul>
 												<li><a href="{% url 'man_boots' %}">Кроссовки</a></li>
-												<li><a href="#">Одежда</a></li>
-												<li><a href="#">Аксессуары</a></li>
+												<li><a href="{% url 'man_clothes' %}">Одежда</a></li>
+												<li><a href="{% url 'man_accessories' %}">Аксессуары</a></li>
 
 											</ul>
 										</li>
@@ -133,9 +133,9 @@
 										<li>
 											<span class="opener">Женское</span>
 											<ul>
-												<li><a href="#">Кроссовки</a></li>
-												<li><a href="#">Одежда</a></li>
-												<li><a href="#">Аксессуары</a></li>
+												<li><a href="{% url 'girls_boots' %}">Кроссовки</a></li>
+												<li><a href="{% url 'girls_clothes' %}">Одежда</a></li>
+												<li><a href="{% url 'girls_accessories' %}">Аксессуары</a></li>
 											</ul>
 										</li>
 										<li><a href="{% url 'stocks' %}">Акции</a></li>

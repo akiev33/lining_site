@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import (PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, StockDetailView, PostListView, StockListView,
-                     StockCreateView, StockUpdateView, StockDeleteView, index, company)
+from .views import (PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, StockDetailView, PostListView, StockListView, PostListView1, PostListView2,
+                     PostListView3, PostListView4, PostListView5, StockCreateView, StockUpdateView, StockDeleteView, index, company)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -12,6 +12,13 @@ urlpatterns = [
 
 
     path('man_boots/', PostListView.as_view(), name='man_boots'),
+    path('girls_boots/', PostListView1.as_view(), name='girls_boots'),
+    path('man_clothes/', PostListView2.as_view(), name='man_clothes'),
+    path('girls_clothes/', PostListView3.as_view(), name='girls_clothes'),
+    path('man_accessories/', PostListView4.as_view(), name='man_accessories'),
+    path('girls_accessories/', PostListView5.as_view(), name='girls_accessories'),
+
+
     path('stocks/', StockListView.as_view(), name='stocks'),
     path('company_detail/', company, name='company'),
 

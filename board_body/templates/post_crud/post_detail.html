@@ -3,23 +3,28 @@
 
 {% block content %}
 <section>
+
     <header class="major">
 			<h2>{{post.name}}</h2>
     </header>
-    <article class="style{{posts.id}}">
-        <img src="{{post.image.url}}" alt="" width="700" height="500">
-        <h3>{{post.price}}</h3>
-        <p>{{post.description}}</p>
-        <p>{{post.categories}}</p>
-        <p>{{post.created_date}}</p>
-        <ul class="actions">
-            {% if user.is_authenticated %}
-                <li><a class="button" href="{% url 'post_update' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Редактировать</span></a></li>
 
-                <li><a class="button" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Удалить</span></a></li>
-            {% endif %}
-        </ul>
-    </article>
+
+        <article class="style{{posts.id}}">
+            <img src="{{post.image.url}}" alt="" class="image" width="340" height="340">
+            <h3>{{post.price}} сом</h3>
+            <p>{{post.description}}</p>
+
+            <p>{{post.created_date}}</p>
+            <ul class="actions">
+                {% if user.is_authenticated %}
+                    <li><a class="button" href="{% url 'post_update' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Редактировать</span></a></li>
+
+                    <li><a class="button" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Удалить</span></a></li>
+                {% endif %}
+            </ul>
+        </article>
+
+
 
 </section>
 

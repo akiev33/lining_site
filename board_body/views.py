@@ -23,6 +23,32 @@ class PostListView(generic.ListView):
     template_name = 'post_categories/man_boots.html'
     context_object_name = 'posts'
 
+class PostListView1(generic.ListView):
+    model = Post
+    template_name = 'post_categories/girls_boots.html'
+    context_object_name = 'posts'
+
+class PostListView2(generic.ListView):
+    model = Post
+    template_name = 'post_categories/man_clothes.html'
+    context_object_name = 'posts'
+
+class PostListView3(generic.ListView):
+    model = Post
+    template_name = 'post_categories/girls_clothes.html'
+    context_object_name = 'posts'
+
+class PostListView4(generic.ListView):
+    model = Post
+    template_name = 'post_categories/man_accessories.html'
+    context_object_name = 'posts'
+
+class PostListView5(generic.ListView):
+    model = Post
+    template_name = 'post_categories/girls_accessories.html'
+    context_object_name = 'posts'
+
+
 
 class PostDetailView(generic.DetailView):
     model = Post
