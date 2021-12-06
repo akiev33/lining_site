@@ -13,7 +13,9 @@
             <img src="{{post.image.url}}" alt="" class="image" width="340" height="340">
             <h3>{{post.price}} сом</h3>
             <p>{{post.description}}</p>
-
+            {%for cate in post.categories.all%}
+			<p>{{cate}}</p>
+			{%endfor%}
             <p>{{post.created_date}}</p>
             <ul class="actions">
                 {% if user.is_authenticated %}

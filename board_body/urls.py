@@ -21,8 +21,6 @@ urlpatterns = [
 
     path('stocks/', StockListView.as_view(), name='stocks'),
     path('company_detail/', company, name='company'),
-
-
     path('', StockDetailView.as_view(), name='index'),
     path('stock_create/', StockCreateView.as_view(), name='stock_create'),
     path('stock_detail/<int:pk>/', StockDetailView.as_view(), name='stock_detail'),

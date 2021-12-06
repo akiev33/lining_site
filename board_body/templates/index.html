@@ -86,8 +86,10 @@
 										<article class="style{{posts.id}}">
 											<a href="{% url 'post_detail' pk=post.pk %}" class="image"><img src="{{post.image.url}}" alt="" width="444" height="444"></a>
 											<h3>{{post.name}}</h3>
+											{%for cate in post.categories.all%}
+											<p>{{cate}}</p>
+											{%endfor%}
 											<h3>{{post.price}} сом</h3>
-
 											<ul class="actions">
 												<li><a href="{% url 'post_detail' pk=post.pk %}" class="button">Посмотреть</a></li>
 											</ul>
